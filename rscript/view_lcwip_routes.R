@@ -3,14 +3,14 @@ library(sf)
 library(leaflet)
 
 # setwd
-setwd("C:/Users/tom.alexander1/OneDrive - West Of England Combined Authority/Transport/2.1 Walking, Cycling & Wheeling/0.2 LCWIP")
+setwd("C:/Users/tom.alexander1/OneDrive - West Of England Combined Authority/Transport/2.1 Walking, Cycling & Wheeling")
 
 path_to_Rscripts <- "C:\\Users\\tom.alexander1\\OneDrive - West Of England Combined Authority\\Transport\\7.0 Data\\Rscripts\\"
 
 # read in lcwip routes from Theo's database
 if(!exists("connec")) {
   # source the connect_postgreSQL.R script
-  source(paste0(path_to_Rscripts,"access_postgresql\\connect_postgreSQL.R"))
+  source(paste0(path_to_Rscripts,"access_postgresql\\access_to_postgresql\\connect_postgreSQL.R"))
 }
 
 lcwip_cycling_routes <- st_read(connec,query = "SELECT * FROM weca.lcwip_cycling_routes") %>% 
@@ -26,14 +26,14 @@ lcwip_walking_routes_variant <- st_read(connec,query = "SELECT * FROM weca.lcwip
   st_transform(crs = 4326)
 
 # import sophie's lcwip routes for comparison
-sophie_lcwip_cycling_routes <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_Cycling_Routes_301220.shp") %>% 
-  st_transform(crs = 4326)
-sophie_lcwip_walking_routes <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_WalkingRoutes_301220.shp") %>% 
-  st_transform(crs = 4326)
-sophie_lcwip_cycling_routes_variant <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_CyclingRoutesVariant_301220.shp") %>% 
-  st_transform(crs = 4326)
-sophie_lcwip_walking_routes_variant <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_WalkingRoutesVariant_301220.shp") %>% 
-  st_transform(crs = 4326)
+# sophie_lcwip_cycling_routes <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_Cycling_Routes_301220.shp") %>% 
+#   st_transform(crs = 4326)
+# sophie_lcwip_walking_routes <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_WalkingRoutes_301220.shp") %>% 
+#   st_transform(crs = 4326)
+# sophie_lcwip_cycling_routes_variant <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_CyclingRoutesVariant_301220.shp") %>% 
+#   st_transform(crs = 4326)
+# sophie_lcwip_walking_routes_variant <- read_sf("visualisation/shp/LCWIP_dec2020/WECA_LCWIP_WalkingRoutesVariant_301220.shp") %>% 
+#   st_transform(crs = 4326)
 
 # import wcip routes for comparison
 wcip_cycling_routes <- read_sf("visualisation/shp/wcip/LCWIP Cycling Routes.geojson") %>% 
@@ -42,13 +42,13 @@ wcip_walking_routes <- read_sf("visualisation/shp/wcip/LCWIP Walking Routes.geoj
   st_transform(crs = 4326)
 
 #import exisitng cycling infrastructure as sf object
-existing_cycling_infrastructure <- read_sf("C:/Users/tom.alexander1/OneDrive - West Of England Combined Authority/Transport/2.1 Walking, Cycling & Wheeling/0.4 Projects/Cycle Mapping 22/shp/Existing_CycleInfra.shp") %>% 
-  st_transform(crs = 4326)
+# existing_cycling_infrastructure <- read_sf("C:/Users/tom.alexander1/OneDrive - West Of England Combined Authority/Transport/2.1 Walking, Cycling & Wheeling/0.4 Projects/Cycle Mapping 22/shp/Existing_CycleInfra.shp") %>% 
+#   st_transform(crs = 4326)
 
 #import BCC cycle network as sf object
-bcc_cycle_network <- read_sf("visualisation/shp/BCC_CycleNetwork_Modified2.shp") %>% 
-  st_transform(crs = 4326)
-exisiting_cycling_infrastructure <- read_sf("visualisation/shp/Existing_Cycle_Infra_Modified5.shp") %>% 
+# bcc_cycle_network <- read_sf("visualisation/shp/BCC_CycleNetwork_Modified2.shp") %>% 
+#   st_transform(crs = 4326)
+existing_cycling_infrastructure <- read_sf("visualisation/shp/Existing_Cycle_Infra_Modified5.shp") %>% 
   st_transform(crs = 4326)
 
 

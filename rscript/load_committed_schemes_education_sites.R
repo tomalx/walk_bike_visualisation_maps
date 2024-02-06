@@ -17,7 +17,7 @@ setwd("C:\\Users\\tom.alexander1\\OneDrive - West Of England Combined Authority\
 
 if(!exists("connec")) {
   # source the connect_postgreSQL.R script
-  source("access_postgresql\\connect_postgreSQL.R")
+  source("access_postgresql\\access_to_postgresql\\connect_postgreSQL.R")
 }
   
 ## load data sets from weca_dev schema

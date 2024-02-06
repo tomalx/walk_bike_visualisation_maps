@@ -6,7 +6,7 @@
 
 setwd("C:\\Users\\tom.alexander1\\OneDrive - West Of England Combined Authority\\Transport\\2.1 Walking, Cycling & Wheeling\\visualisation")
 
-source("rScript\\load_committed_schemes_education_sites.R")
+source("walk_bike_visualisation_maps\\rScript\\load_committed_schemes_education_sites.R")
 
 
 
